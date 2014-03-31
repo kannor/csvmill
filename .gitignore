@@ -1,0 +1,4 @@
+*.pyc
+*.pyz
+*.DB_Store
+*.py~
