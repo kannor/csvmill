@@ -43,18 +43,17 @@ class CSVMillUi(Frame):
 		self.input_field_label = Label(self, **opt).grid(**grid_opt)
 
 	def input_field(self):
-		input_opt = {
-			"width": 20,
-			"height": 20
+		opt = {
+			"width": 40
 		}
 		grid_opt = {
 			"row": 2,
 			"column": 1,
-			"padx": 20,
+			"padx": 0,
 			"pady": 50
 		}
 
-		self.input_field = Entry(self).grid(**grid_opt)
+		self.input_field = Entry(self, **opt).grid(**grid_opt)
 
 
 	def browsw_btn(self):
@@ -64,7 +63,7 @@ class CSVMillUi(Frame):
 		grid_opt = {
 			"row": 2,
 			"column": 3,
-			"padx": 20,
+			"padx": 0,
 			"pady": 50
 		}
 
