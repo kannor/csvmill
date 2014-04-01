@@ -10,12 +10,13 @@ class CSVMillUi(Frame):
 		self.master.title = "csv mill"
 		self.grid()
 
-		self.banner()
-		self.input_field_label()
-		self.input_field()
-		self.browsw_btn()
+		self._banner()
+		self._input_field_label()
+		self._input_field()
+		self._browse_btn()
+		self._format_btn()
 
-	def banner(self):
+	def _banner(self):
 		opt = {
 			"text": "CSV Mill",
 			"width": 0,
@@ -26,10 +27,11 @@ class CSVMillUi(Frame):
 			"pady": 0
 		}
 
-		self.label = Label(self, **opt).grid(**grid_opt)
+		self.label = Label(self, **opt)
+		self.label.grid(**grid_opt)
 
 
-	def input_field_label(self):
+	def _input_field_label(self):
 		opt = {
 			"text": "Input File"
 		}
@@ -40,9 +42,10 @@ class CSVMillUi(Frame):
 			"pady": 50
 		}
 
-		self.input_field_label = Label(self, **opt).grid(**grid_opt)
+		self.input_field_label = Label(self, **opt)
+		self.input_field_label.grid(**grid_opt)
 
-	def input_field(self):
+	def _input_field(self):
 		opt = {
 			"width": 40
 		}
@@ -53,12 +56,14 @@ class CSVMillUi(Frame):
 			"pady": 50
 		}
 
-		self.input_field = Entry(self, **opt).grid(**grid_opt)
+		self.input_field = Entry(self, **opt)
+		self.input_field.grid(**grid_opt)
 
 
-	def browsw_btn(self):
+	def _browse_btn(self):
 		opt = {
-			"text": "browse"
+			"text": "browse",
+			"command": self.getfilename
 		}
 		grid_opt = {
 			"row": 2,
@@ -67,10 +72,60 @@ class CSVMillUi(Frame):
 			"pady": 50
 		}
 
-		self.btn = Button(self, **opt).grid(**grid_opt)
+		self.browse_btn = Button(self, **opt)
+		self.browse_btn.grid(**grid_opt)
 
-	def select(self):
+	def _format_btn(self):
+		opt = {
+			"text": "FORMAT",
+			"command": self.savefilename
+		}
+		grid_opt = {
+			"row": 2,
+			"column": 4,
+			"padx": 0,
+			"pady": 50
+		}
+
+		self.format_btn = Button(self, **opt)
+		self.format_btn.grid(**grid_opt)
+
+	def _select(self):
 		pass
+
+	def clear(self):
+		self.input_field.delete(0, END)
+
+	def getfilename(self):
+		opt = {
+			"parent": self,
+			"filetypes": [("csv files", ".csv")],
+			"title": "Open cvs file"
+		}
+
+		#get filename
+		filename = tkFileDialog.askopenfilename(**opt)
+
+		if filename:
+			self.clear()
+
+			self.input_field.insert(0, filename)
+
+	def savefilename(self):
+		opt = {
+			"defaultextension": ".csv",
+			"initialfile": "formated.csv",
+			"parent": self,
+			"filetypes": [("csv files", ".csv")],
+			"title": "Open cvs file"
+		}
+
+		filename = tkFileDialog.asksaveasfilename(**opt)
+
+		if filename:
+			print filename
+		
+			
 
 
 
