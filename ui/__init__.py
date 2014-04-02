@@ -28,6 +28,8 @@ class CSVMillUi(Frame):
 			"height": 0
 		}
 		grid_opt = {
+			"row": 0,
+			"column": 1,
 			"padx": 0,
 			"pady": 0
 		}
