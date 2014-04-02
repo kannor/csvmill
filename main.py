@@ -2,10 +2,8 @@ from ui import CSVMillUi
 
 def main():
 	"""
-	Instantiate The main Window
+	Instantiate the application.
 	"""
-
 	CSVMillUi().mainloop()
-
 
 main()

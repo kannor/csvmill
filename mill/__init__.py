@@ -1,4 +1,4 @@
-import sys, os, csv
+import csv
 
 class Mill(object):
 
