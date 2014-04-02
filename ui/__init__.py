@@ -2,10 +2,15 @@ from Tkinter import *
 
 import tkFileDialog
 
+from mill import Mill
+
 class CSVMillUi(Frame):
 	"""
 	"""
 	def __init__(self):
+
+		self.input_csv = self.output_csv = ""
+
 		Frame.__init__(self, bg="")
 		self.master.title = "csv mill"
 		self.grid()
@@ -94,7 +99,17 @@ class CSVMillUi(Frame):
 		pass
 
 	def clear(self):
+		"""
+		Clear the input field. 
+		"""
 		self.input_field.delete(0, END)
+
+	def reset(self):
+		"""
+		Reset self.input_csv and self.output_csv
+		"""
+
+		self.input_csv = self.output_csv = ""
 
 	def getfilename(self):
 		opt = {
@@ -109,6 +124,7 @@ class CSVMillUi(Frame):
 		if filename:
 			self.clear()
 
+			self.input_csv = filename
 			self.input_field.insert(0, filename)
 
 	def savefilename(self):
@@ -123,8 +139,12 @@ class CSVMillUi(Frame):
 		filename = tkFileDialog.asksaveasfilename(**opt)
 
 		if filename:
-			print filename
-		
+			self.output_csv = filename
+
+			Mill(self.input_csv, self.output_csv).process()
+			
+			self.clear()
+			self.reset()		
 			
 
 
