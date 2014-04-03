@@ -88,27 +88,3 @@ class Mill(object):
 			raise TypeError(
 					"Excepting a FileType not %s " % (type(_file))
 				)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
